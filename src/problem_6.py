@@ -43,11 +43,31 @@ class LinkedList:
 
 def union(llist_1, llist_2):
     # Your Solution Here
-    pass
+    set_1 = make_set(llist_1)
+    set_2 = make_set(llist_2)
+    union_set = set_1.union(set_2)
+    result = LinkedList()
+    for element in union_set:
+        result.append(element)
+    return result
 
 def intersection(llist_1, llist_2):
     # Your Solution Here
-    pass
+    set_1 = make_set(llist_1)
+    set_2 = make_set(llist_2)
+    intersection_set = set_1.intersection(set_2)
+    result = LinkedList()
+    for element in intersection_set:
+        result.append(element)
+    return result
+
+def make_set(llist):
+    result = set()
+    node = llist.head
+    while node:
+        result.add(node.value)
+        node = node.next
+    return result
 
 
 # Test case 1
