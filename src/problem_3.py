@@ -35,6 +35,8 @@ def get_huffman_codes(node, prefix = ''):
     return dictl
 
 def huffman_encoding(data):
+    if data is None or len(data) == 0:
+        return "", None
     _, tree = build_huffman_tree(data)
     codes = get_huffman_codes(tree)
     encoded = ""
@@ -56,10 +58,48 @@ def huffman_decoding(data, tree):
             node = tree
     return decoded
 
+def eval_test(test_number, expected_output, actual_output):
+    print("")
+    print("TEST CASE " + str(test_number))
+    print("===========")
+    print("- expected output:")
+    print(expected_output)
+    print("- actual output:")
+    print(actual_output)
+    print("")
+
 if __name__ == "__main__":
+    # test case 1
+    input_str = "The bird is the word"
+    encoded_data, tree = huffman_encoding(input_str)
+    result = huffman_decoding(encoded_data, tree)
+    expected_output = "The bird is the word"
+    eval_test(1, expected_output, result)
+
+    # test case 2
+    input_str = ""
+    encoded_data, tree = huffman_encoding(input_str)
+    result = huffman_decoding(encoded_data, tree)
+    expected_output = ""
+    eval_test(2, expected_output, result)
+
+    # test case 3
+    input_str = None
+    encoded_data, tree = huffman_encoding(input_str)
+    result = huffman_decoding(encoded_data, tree)
+    expected_output = ""
+    eval_test(3, expected_output, result)
+
+    # test case 4
+    input_str = "AAAAAAABBBCCCCCCCDDEEEEEEAAAAAAABBBCCCCCCCDDEEEEEEAAAAAAABBBCCCCCCCDDEEEEEEAAAAAAABBBCCCCCCCDDEEEEEEAAAAAAABBBCCCCCCCDDEEEEEEAAAAAAABBBCCCCCCCDDEEEEEE"
+    encoded_data, tree = huffman_encoding(input_str)
+    result = huffman_decoding(encoded_data, tree)
+    expected_output = "AAAAAAABBBCCCCCCCDDEEEEEEAAAAAAABBBCCCCCCCDDEEEEEEAAAAAAABBBCCCCCCCDDEEEEEEAAAAAAABBBCCCCCCCDDEEEEEEAAAAAAABBBCCCCCCCDDEEEEEEAAAAAAABBBCCCCCCCDDEEEEEE"
+    eval_test(4, expected_output, result)
+
+"""
     codes = {}
 
-    #a_great_sentence = "AAAAAAABBBCCCCCCCDDEEEEEE"
     a_great_sentence = "The bird is the word"
 
     print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
@@ -74,3 +114,4 @@ if __name__ == "__main__":
 
     print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
     print ("The content of the encoded data is: {}\n".format(decoded_data))
+"""

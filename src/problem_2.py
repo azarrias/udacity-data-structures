@@ -59,3 +59,13 @@ eval_test(2, expected_output, result)
 expected_output = ['testdir\\subdir2\\.gitkeep', 'testdir\\subdir4\\.gitkeep']
 result = find_files(".gitkeep", "./testdir")
 eval_test(3, expected_output, result)
+
+# test case 4
+expected_output = []
+result = find_files(".c", "./nonexistent")
+eval_test(4, expected_output, result)
+
+# test case 5
+expected_output = []
+result = find_files(".nope", "./testdir")
+eval_test(5, expected_output, result)

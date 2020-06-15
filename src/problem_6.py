@@ -19,7 +19,6 @@ class LinkedList:
             cur_head = cur_head.next
         return out_string
 
-
     def append(self, value):
 
         if self.head is None:
@@ -69,7 +68,78 @@ def make_set(llist):
         node = node.next
     return result
 
+def eval_test(test_number, expected_output, actual_output):
+    print("")
+    print("TEST CASE " + str(test_number))
+    print("===========")
+    print("- expected output (order of elements may differ):")
+    print(expected_output)
+    print("- actual output:")
+    print(actual_output)
+    print("")
 
+if __name__ == "__main__":
+    # test case 1
+    llist_1 = LinkedList()
+    llist_2 = LinkedList()
+    result = union(llist_1, llist_2)
+    expected_output = ""
+    eval_test(1, expected_output, result)
+
+    # test case 2
+    result = intersection(llist_1, llist_2)
+    expected_output = ""
+    eval_test(2, expected_output, result)
+
+    # test case 3
+    llist_1 = LinkedList()
+    llist_2 = LinkedList()
+    element_1 = [3,2,4,35,6,65,6,4,3,21]
+    for e in element_1:
+        llist_1.append(e)
+    element_2 = [6,32,4,9,6,1,11,21,1]
+    for e in element_2:
+        llist_2.append(e)
+    result = union(llist_1, llist_2)
+    expected_output = "32 -> 65 -> 2 -> 35 -> 3 -> 4 -> 6 -> 1 -> 9 -> 11 -> 21 ->"
+    eval_test(3, expected_output, result)
+
+    # test case 4
+    result = intersection(llist_1, llist_2)
+    expected_output = "4 -> 21 -> 6 ->"
+    eval_test(4, expected_output, result)
+
+    # test case 5
+    llist_1 = LinkedList()
+    llist_2 = LinkedList()
+    element_1 = [3,2,4,35,6,65,6,4,3,21]
+    for e in element_1:
+        llist_1.append(e)
+    result = union(llist_1, llist_2)
+    expected_output = "65 -> 2 -> 35 -> 3 -> 4 -> 6 -> 21 ->"
+    eval_test(5, expected_output, result)
+
+    # test case 6
+    result = intersection(llist_1, llist_2)
+    expected_output = ""
+    eval_test(6, expected_output, result)
+
+    # test case 7
+    llist_1 = LinkedList()
+    llist_2 = LinkedList()
+    element_2 = [6,32,4,9,6,1,11,21,1]
+    for e in element_2:
+        llist_2.append(e)
+    result = union(llist_1, llist_2)
+    expected_output = "32 -> 1 -> 4 -> 21 -> 6 -> 9 -> 11 ->"
+    eval_test(7, expected_output, result)
+
+    # test case 8
+    result = intersection(llist_1, llist_2)
+    expected_output = ""
+    eval_test(8, expected_output, result)
+
+"""
 # Test case 1
 
 linked_list_1 = LinkedList()
@@ -103,3 +173,4 @@ for i in element_2:
 
 print (union(linked_list_3,linked_list_4))
 print (intersection(linked_list_3,linked_list_4))
+"""

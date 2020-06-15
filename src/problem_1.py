@@ -2,7 +2,7 @@ from collections import OrderedDict
 
 class LRU_Cache(object):
 
-    def __init__(self, capacity):
+    def __init__(self, capacity=10):
         # Initialize class variables
         self.capacity = capacity
         self.data = OrderedDict()
@@ -61,3 +61,8 @@ our_cache.get(1)
 our_cache.set(4, 40)
 result = our_cache.get(2)
 eval_test(3, "-1", result)
+
+# test case 4
+our_cache = LRU_Cache()
+result = our_cache.get(1)
+eval_test(4, "-1", result)
